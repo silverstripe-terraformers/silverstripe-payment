@@ -577,7 +577,8 @@ JS;
 		}
 
 		// submit payment request to get the URL for redirection
-		$pxpay = new PxPay(self::$pxPay_Url, self::$pxPay_Userid, self::$pxPay_Key);
+		$cert = defined('SS_CACERT_LOCATION') ? SS_CACERT_LOCATION : '';
+		$pxpay = new PxPay(self::$pxPay_Url, self::$pxPay_Userid, self::$pxPay_Key, $cert);
 		$request_string = $pxpay->makeRequest($request);
 		$response = new MifMessage($request_string);
 		$valid = $response->get_attribute("valid");

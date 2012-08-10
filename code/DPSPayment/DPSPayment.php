@@ -255,7 +255,7 @@ class DPSPayment extends Payment {
 		}
 	}
 	
-	private function prepareDPSHostedRequest($data){
+	public function prepareDPSHostedRequest($data){
 		//never put this loop after $inputs['AmountInput'] = $amount, since it will change it to an array.
 		foreach($data as $element => $value){
 			if(in_array($element, self::$dpshosted_input_elements)){
