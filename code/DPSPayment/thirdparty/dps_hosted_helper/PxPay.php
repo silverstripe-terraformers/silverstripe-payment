@@ -38,6 +38,8 @@ class PxPay
 		if (!empty($this->Cert_Location)) {
 			curl_setopt($ch, CURLOPT_CAINFO, $this->Cert_Location);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+		} else {
+			user_error('PXPay::makeRequest() requires the Certificate location to be set to verify if the remote URL is secure.', E_USER_ERROR);
 		}
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 
@@ -64,6 +66,8 @@ class PxPay
 		if (!empty($this->Cert_Location)) {
 			curl_setopt($ch, CURLOPT_CAINFO, $this->Cert_Location);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+		} else {
+			user_error('PXPay::getRequest() requires the Certificate location to be set to verify if the remote URL is secure.', E_USER_ERROR);
 		}
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 
